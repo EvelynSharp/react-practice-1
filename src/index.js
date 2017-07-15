@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 //make a component which produce html
 import{ YOUTUBE_DATA_API_KEY } from './keys'
-const API_KEY = process.env.YOUTUBE_DATA_API_KEY;
+const API_KEY = YOUTUBE_DATA_API_KEY;
 
 //const as will never reassign App
 const App = () => {
