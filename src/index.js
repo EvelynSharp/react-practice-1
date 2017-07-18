@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
 import{ YOUTUBE_DATA_API_KEY } from './keys'
 const API_KEY = YOUTUBE_DATA_API_KEY;
 
@@ -23,7 +24,9 @@ constructor(props) {
     return (
       <div>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]} />
         <VideoList videos={this.state.videos} />
+
       </div>
     );
   }
