@@ -4,17 +4,19 @@ import React from 'react'; //babel will use React.createElement
 class SearchBar extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props); //the parent component's props passed on
     this.state={ term: ''}
   }
 
-  onInputChange = (e) => {
-    console.log(e.target.value)
-  }
 
   render() {
     return(
-      <input onChange={this.onInputChange}/>
+      <div>
+        <input
+          value = { this.state.term }
+          onChange={ event => this.setState({ term: event.target.value }) }
+        />
+      </div>
     )
   }
 }
