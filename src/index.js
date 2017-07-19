@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import ReactDom from 'react-dom';
 //make a component which produce html
@@ -14,16 +15,21 @@ class App extends React.Component {
 constructor(props) {
   super(props);
   this.state={ videos: [], selectedVideo: null };
+  this.videoSearch('surfboards');
 
-  YTSearch({ key: API_KEY, term: 'surfboards'}, (videos) => {
-    this.setState({ videos: videos, selectedVideo: videos[0] })
-  });
 }
 
+  videoSearch = (term) => {
+    YTSearch({ key: API_KEY, term: term}, (videos) => {
+      this.setState({ videos: videos, selectedVideo: videos[0] })
+    });
+  }
+
   render() {
+    const videoSearch = _.debounce( this.videoSearch, 300)
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={videoSearch}/>
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           videos={this.state.videos}
